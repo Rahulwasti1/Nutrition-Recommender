@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+<!--  -->
+{% block stylesheets %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/index.css') }}"
+/>
+{% endblock %}
+<!--  -->
+{% block title %} About us {% endblock %}
+
+<!--  -->
+{% block body %}
+
+<section style="width: 80%; margin: auto">
+  <div class="pill">Team</div>
+  <article>
+    <img
+      src="{{ url_for('static', filename='images/svgs/team.svg') }}"
+      alt="illustration of a team"
+      width="400"
+    />
+    <h2>About Us</h2>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque placeat
+      id provident. Vel, magni! Nam, voluptatum officiis! Sint maxime ea in
+      quidem earum, beatae perspiciatis unde veritatis dolore esse iusto
+      reprehenderit inventore ex hic error assumenda aliquid et obcaecati
+      accusantium perferendis? Labore, tempore!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, quae
+      at. Officia, aliquid distinctio. Tenetur et cupiditate ullam deserunt
+      perspiciatis animi, delectus nisi nihil eligendi consequatur magnam,
+      facere nostrum impedit necessitatibus. Quam saepe magnam quos eius
+      exercitationem, nisi quibusdam repellendus quis eligendi nemo, perferendis
+      amet accusamus? Inventore eligendi blanditiis fugiat molestiae minus quis
+      aliquid dolorem.
+    </p>
+  </article>
+</section>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1rem 3rem !important;
+    margin: auto 5rem !important;
+  }
+
+  p {
+    padding: 0.1rem 2rem;
+  }
+
+</style>
+
+{% endblock %}

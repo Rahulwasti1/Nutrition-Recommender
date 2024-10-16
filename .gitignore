@@ -1,0 +1,15 @@
+# cache
+__pycache__/
+.mypy_cache/
+
+# notebooks
+.ipynb_checkpoints/
+.virtual_documents/
+
+# pdfs?
+*.pdf
+
+# code editors / ides
+.vscode/
+.idea/
+

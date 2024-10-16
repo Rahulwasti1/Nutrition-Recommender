@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/style.css') }}"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/footer.css')}}"
+    />
+    {% block stylesheets %} {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+
+    <style>
+      /* Style for dropdown */
+      .dropdown {
+          position: relative;
+          display: inline-block;
+      }
+    
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+      }
+    
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+      }
+    
+      .dropdown-content a:hover {
+          background-color: #f1f1f1;
+      }
+    
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+    
+      .dropdown:hover .dropbtn {
+          background-color: transparent;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navlinks relative">
+        <a href="/" aria-label="Go to home page">
+          <img
+            src="{{ url_for('static', filename='/images/logos/logo.png') }}"
+            alt="Acme Logo"
+            draggable="false"
+          />
+        </a>
+
+        <ul>
+          <li><a href="{{ url_for('home')}}">Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+          <li><a href="{{ url_for('dataset')}}">Dataset</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">More Page</a>
+            <div class="dropdown-content"> <!-- Fixed class name -->
+              <a href="{{url_for('map')}}">Map</a>
+              <a href="#">Routes</a>
+            </div>
+          </li>
+        
+          <li>
+            <!-- <a href="#how-work">How it works?</a> -->
+          </li>
+        </ul>
+
+        <div id="floating-nav-wrapper" class="relative">
+          <div id="floating-nav">
+            <nav class="sidebar-nav">
+              <div class="x-mark">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+              <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                  <a href="#how-work" onclick="closeSidebar()">How it works?</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="bars">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 9h16.5m-16.5 6.75h16.5"
+            />
+          </svg>
+        </div>
+
+        <div class="btn">
+          <button>Sign up</button>
+        </div>
+      </nav>
+    </header>
+    {% block body %} {% endblock %}
+  </body>
+
+  <!-- IDK -->
+  <footer>
+    <div class="footer-container">
+      <!-- Logo -->
+      <img
+        src="{{ url_for('static', filename='images/logos/logo.png') }}"
+        alt="logo"
+        width="200"
+        draggable="false"
+      />
+      <div class="footer-links">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="/form">Trek Prediction Form</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="social-media">
+        <h4>Social Media</h4>
+        <a href="" target="_blank">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/rahulwasti_/" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <p
+      id="copy"
+      style="
+        text-align: center;
+        font-size: 0.735rem;
+        margin-top: 1.5rem;
+        opacity: 0.7;
+      "
+    >
+      <script>
+        document.querySelector("p#copy").innerHTML =
+          "&copy; " +
+          `${new Date().getFullYear()} Acme Co. All Rights Reserved.`;
+      </script>
+    </p>
+  </footer>
+
+  <script>
+    const bars = document.querySelector("div.bars");
+    const xMark = document.querySelector("div.x-mark");
+    const sidebar = document.querySelector("div#floating-nav-wrapper");
+
+    bars.addEventListener("click", () => {
+      const keyframes = [
+        {
+          right: "calc(-1rem - 110%)",
+        },
+        {
+          right: "-1rem",
+        },
+      ];
+      const timings = {
+        duration: 450,
+        easing: "ease",
+        fill: "forwards",
+      };
+      sidebar.animate(keyframes, timings);
+      sidebar.animate(
+        [
+          {
+            backgroundColor: "transparent",
+            backdropFilter: "none",
+          },
+          {
+            backgroundColor: "#070a12ac",
+            backdropFilter: "blur(2px)",
+          },
+        ],
+        {
+          duration: 800,
+          easing: "ease",
+          fill: "forwards",
+          delay: 350,
+        }
+      );
+      document.body.style.overflowY = "hidden";
+    });
+    function closeSidebar() {
+      const keyframes = [
+        {
+          right: "-1rem",
+        },
+        {
+          right: "calc(-1rem - 110%)",
+        },
+      ];
+      const timings = {
+        duration: 500,
+        easing: "ease",
+        fill: "forwards",
+        delay: 150,
+      };
+      sidebar.animate(keyframes, timings);
+      sidebar.animate(
+        [
+          {
+            backgroundColor: "#070a12ac",
+            backdropFilter: "blur(2px)",
+          },
+          {
+            backgroundColor: "transparent",
+            backdropFilter: "blur(0px)",
+          },
+        ],
+        {
+          ...timings,
+          duration: 200,
+          delay: 0,
+        }
+      );
+      document.body.style.overflowY = "scroll";
+    }
+    xMark.addEventListener("click", closeSidebar);
+    sidebar.addEventListener("click", closeSidebar);
+
+    document
+      .querySelector("div#floating-nav")
+      .addEventListener("click", (event) => event.stopPropagation());
+  </script>
+</html>
