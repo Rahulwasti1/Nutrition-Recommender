@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css') }}">
+
+{% endblock %}
+
+{% block title %} Nutrition Recommendor {% endblock %}
+
+<!--  -->
+{% block body %}
 
 <div class="form-container">
     <h1 style="text-align: center; padding: 2rem 0">Enter your trip details</h1>
     <p style="width: 50%; margin: 0 auto; text-align: center; font-size: 0.75rem; color:#998787">
         Please fill all the fields for an accurate estimation.
     </p>
-    <form action="/" method="post">
+    <form action="/predict" method="post">
         <fieldset>
 
             <div class="relative">
@@ -23,7 +26,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
                     </svg>
                 </div>
-                <select id="Encoded_Trek" onchange="checktrek()" required>
+                <select id="Encoded_Trek" name="Encoded_Trek" onchange="checktrek()" required>
                     <option value="" selected disabled>Select a Trek Type</option>
                     <option value="0">Annapurna Base Camp Heli Trek</option>
                     <option value="1">Annapurna Base Camp Short Trek</option>
@@ -101,6 +104,21 @@
                 <input type="number" name="altitude" id="altitude" min="1000" max="8848" placeholder="Peak altitude in meters" autocomplete="off" required readonly/>
             </div>
 
+            <div class="relative">
+                <label for="tripgrade">Trek Grade</label>
+                <div class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                    </svg>
+                </div>
+                <select name="tripgrade" id="tripgrade" required>
+                    <option value="" selected disabled>Select a trek difficulty</option>
+                    <option value="1">Easy</option>
+                    <option value="2">Moderate</option>
+                    <option value="0">Hard</option>
+                </select>
+            </div>
+
             <div class="inline">
                 <div class="relative">
                     <div class="input-icon">
@@ -132,20 +150,7 @@
                 <input type="number" name="days" id="days" step="1" placeholder="Trek duration in days" required />
             </div>
 
-            <div class="relative">
-                <label for="tripgrade">Trek Grade</label>
-                <div class="input-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-                    </svg>
-                </div>
-                <select name="tripgrade" id="tripgrade" required>
-                    <option value="" disabled selected>Select a trek difficulty</option>
-                    <option value="easy">Easy</option>
-                    <option value="moderate">Moderate</option>
-                    <option value="hard">Hard</option>
-                </select>
-            </div>
+
 
             <div class="relative">
                 <label for="sex">Sex</label>
@@ -164,10 +169,30 @@
 
         </fieldset>
 
-        <input type="submit" value="Estimate" />
+         <button type="submit">Estimate</button>
+
     </form>
+
+{% if nutrient_data %}
+    <div class="output-message">
+        <h2>"Here’s the essential nutrition required for your journey!"</h2>
+    
+        <div class="nutrient-box">
+            {% for nutrient in nutrient_data %}
+                <div class="nutrient-row">
+                    <h3>{{ nutrient.label }}</h3>
+                    <p><strong>Description:</strong> {{ nutrient.description }}</p>
+                    <p><strong>Food Sources:</strong> {{ nutrient.food_source }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+
+
 </div>
 
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
-</body>
-</html>
+{% endblock %}

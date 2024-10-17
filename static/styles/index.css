@@ -8,7 +8,9 @@
 }
 
 .landing h1 {
-  font-size: 4rem;
+  /* font-size: 4rem; */
+  font-family: 'Kanit', sans-serif;
+  margin-top: 1%;
 }
 
 .landing > div {
@@ -22,8 +24,9 @@
 }
 
 .landing img {
-  width: 80vw;
-  height: 40dvh;
+  margin-top: 3%;
+  width: 650px;
+  height: 50dvh;
   grid-area: a;
 }
 
@@ -33,6 +36,7 @@
 
 .landing p {
   grid-area: c;
+  
 }
 
 .pill {

@@ -1,21 +1,19 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <img src="static/images/svgs/nepal_map.svg">
-    
-</body>
-</html> -->
-
 
 {% extends "layout.html" %}
 
 {% block stylesheets %}
+<style>
+
+    .map{
+        margin-bottom: 10%;
+    }
+
+    .map1{
+        margin-top: 10px;
+        width: 100%;
+    }
+
+</style>
 
 
 {% endblock %}
@@ -25,7 +23,15 @@
 <!--  -->
 {% block body %}
 
-<h1>Map</h1>
+<h1></h1>
+
+<div class="map">
+    <img src="static/images/svgs/nepal_map.svg"><br>
+</div>
+
+<!-- <div class="map1">
+    <img src="static/images/logos/nepal_map.png"><br>
+</div> -->
 
 
 

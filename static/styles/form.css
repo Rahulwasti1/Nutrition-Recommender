@@ -223,3 +223,49 @@ div:has(input:required, select:required) label:nth-child(1)::after {
     padding: 1rem 0;
   }
 }
+
+
+.output-message {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #4caf50;
+  background-color: #e8f5e9;
+  border-radius: 5px;
+  margin-left: 26%;
+  margin-right: 26%;
+  font-size: small;
+}
+
+.output-message h2 {
+  color: #4caf50;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nutrient-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nutrient-row {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-weight: 400;
+}
+
+.nutrient-row h3 {
+  margin: 0;
+  color: #444444;
+  font-weight: bold;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.nutrient-row p {
+  margin: 5px 0;
+  color: #555;
+}
