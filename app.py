@@ -22,18 +22,21 @@ def about():
 @app.route('/data-set')
 def dataset():
     df = pd.read_csv("Notebook/cleaned_dataset.csv")
-
-    # Creating Table HTML
+    
+    # Creating table HTML
     table_html = df.to_html(classes='data', index=False)
 
-    fig = px.bar(df, x='Trip Grade', title='Trip Grades Visualization')
-    fig.update_layout( autosize=True, height=600, margin=dict(l=40, r=40, t=40, b=40))
+    # Creating Plotly figure (bar chart)
+    fig = px.bar(df, x='Trek', title='Trip Grades Visualization')
 
+    # Update layout with specific dimensions
+    fig.update_layout(height=600)
+
+    # Converting Plotly figure to HTML
     graph_html = pio.to_html(fig, full_html=False, config={'responsive': True})
 
+    # Render template and pass table and graph
     return render_template('dataset.html', table=table_html, graph_html=graph_html)
-
-
 
 @app.route('/map')
 def map():
