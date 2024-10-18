@@ -2,6 +2,8 @@ import pickle
 from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import numpy as np
+import plotly.express as px
+import plotly.io as pio
 
 app = Flask(__name__)
 
@@ -19,9 +21,19 @@ def about():
 
 @app.route('/data-set')
 def dataset():
-    df = pd.read_csv("Nepali_Treking_dataset.csv")
+    df = pd.read_csv("Notebook/cleaned_dataset.csv")
+
+    # Creating Table HTML
     table_html = df.to_html(classes='data', index=False)
-    return render_template('dataset.html', table = table_html)
+
+    fig = px.bar(df, x='Trip Grade', title='Trip Grades Visualization')
+    fig.update_layout( autosize=True, height=600, margin=dict(l=40, r=40, t=40, b=40))
+
+    graph_html = pio.to_html(fig, full_html=False, config={'responsive': True})
+
+    return render_template('dataset.html', table=table_html, graph_html=graph_html)
+
+
 
 @app.route('/map')
 def map():
@@ -34,6 +46,12 @@ def routes():
 @app.route('/model')
 def model():
     return render_template('form.html', recommended_value=None)
+
+@app.route('/guide')
+def guide():
+    return render_template('trekandtreat.html')
+
+
 
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
