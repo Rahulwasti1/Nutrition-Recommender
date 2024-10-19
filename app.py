@@ -4,10 +4,12 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.io as pio
+from markupsafe import Markup
+
 
 app = Flask(__name__)
 
-# Load the model and scaler
+# Loading the model and scaler
 rfr_model = pickle.load(open('rfr_model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 
@@ -19,24 +21,94 @@ def home():
 def about():
     return render_template('about.html')
 
+
 @app.route('/data-set')
 def dataset():
     df = pd.read_csv("Notebook/cleaned_dataset.csv")
-    
+
     # Creating table HTML
     table_html = df.to_html(classes='data', index=False)
 
-    # Creating Plotly figure (bar chart)
-    fig = px.bar(df, x='Trek', title='Trip Grades Visualization')
+    ### 1. Scatter Plot for 'Trek' vs 'Trip Grade'
+    fig1 = px.scatter(
+        df, 
+        x='Trek', 
+        y='Trip Grade', 
+        title='Trek vs Trip Grade Scatter Plot',
+        labels={'Trek': 'Trek', 'Trip Grade': 'Trip Grade'}
+    )
+    
+    ### 2. Scatter Plot for 'Max Altitude' vs 'Cost' with color representing 'Trip Grade'
+    fig2 = px.scatter(
+        df, 
+        x='Max Altitude', 
+        y='Cost', 
+        color='Trip Grade', 
+        title='Max Altitude vs Cost (colored by Trip Grade)',
+        labels={'Max Altitude': 'Max Altitude', 'Cost': 'Cost', 'Trip Grade': 'Trip Grade'},
+        size='Trekking Group Size',  
+        hover_data=['Trek']  
+    )
 
-    # Update layout with specific dimensions
-    fig.update_layout(height=600)
+    ### 3. Pie Chart for 'Purpose of Travel'
+    fig3 = px.pie(
+        df, 
+        names='Purpose of Travel', 
+        title='Purpose of Travel Distribution',
+        color_discrete_sequence=px.colors.qualitative.Set1,
+    )
 
-    # Converting Plotly figure to HTML
-    graph_html = pio.to_html(fig, full_html=False, config={'responsive': True})
+    ### 4. Violin Plot for 'Age' vs 'Fitness Level'
+    fig4 = px.violin(
+        df, 
+        x='Fitness Level', 
+        y='Age', 
+        title='Age Distribution by Fitness Level',
+        box=True,  
+        points='all',  
+    )
 
-    # Render template and pass table and graph
-    return render_template('dataset.html', table=table_html, graph_html=graph_html)
+    ### 5. Heatmap for 'Weather Conditions' vs 'Trekking Group Size'
+    fig5 = px.density_heatmap(
+        df, 
+        x='Weather Conditions', 
+        y='Trekking Group Size', 
+        title='Weather Conditions vs Trekking Group Size Heatmap'
+    )
+
+    ### 6. Parallel Chart for 'Sex', and 'Health Incidents'
+    fig6 = px.parallel_categories(
+        df, 
+        dimensions=['Sex', 'Health Incidents'], 
+        title='Sex and Health Incidents Parallel Categories Diagram',
+        color=df['Age'], 
+        color_continuous_scale=px.colors.sequential.Viridis,  
+        color_continuous_midpoint=df['Age'].mean()  
+    )
+
+    fig1.update_layout(height=600)
+    fig1.update_traces(marker=dict(color='red'))
+    fig2.update_layout(height=600)
+    fig3.update_layout(height=600)
+    fig4.update_layout(height=600)
+    fig5.update_layout(height=600)
+    fig6.update_layout(height=600)
+
+    # Converting figures to HTML
+    graph_html1 = fig1.to_html(full_html=False)
+    graph_html2 = fig2.to_html(full_html=False)
+    graph_html3 = fig3.to_html(full_html=False)
+    graph_html4 = fig4.to_html(full_html=False)
+    graph_html5 = fig5.to_html(full_html=False)
+    graph_html6 = fig6.to_html(full_html=False)
+
+    # Concatenating all graph HTMLs
+    combined_graph_html = (
+        graph_html1 + graph_html2 + graph_html3 + graph_html4 + graph_html5 + graph_html6)
+
+    # Rendering the template and pass the table and combined graph HTML
+    return render_template('dataset.html', table=table_html, graph_html=Markup(combined_graph_html))
+
 
 @app.route('/map')
 def map():
@@ -53,7 +125,6 @@ def model():
 @app.route('/guide')
 def guide():
     return render_template('trekandtreat.html')
-
 
 
 @app.route('/predict_api', methods=['POST'])
