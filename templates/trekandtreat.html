@@ -1,104 +1,129 @@
-{% extends "layout.html" %}
-
+{% extends "layout.html" %} 
+<!--  -->
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/trek&treat.css') }}">
-{% endblock %}
-
-{% block title %} Trek & Treat {% endblock %}
-
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/trek&treat.css') }}"
+/>
+{% endblock %} 
+<!--  -->
+{% block title %} Trek & Treat {% endblock %} 
+<!--  -->
 {% block body %}
 
-
 <body>
+  <div class="h2">
+    <h2>Meet Our Professionals</h2>
+  </div>
 
-    <div class="h2">
-        <h2> | Meet Our Professionals</h2>
-    </div>
+  <div class="expertdoctors">
+    <h3>Expert Doctors</h3>
+  </div>
 
-    <div class="expertdoctors">
-        <h3> Expert Doctors </h3>
-    </div>
+  <div class="container">
+    <article class="post">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/doctor1.jpg') }}"
+        alt="Cost Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Dr. Mohan Sherpa</h3>
+      <p>Altitude Medicine Specialist</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button">Consult</button>
+      </a>
+    </article>
+    <article class="post">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/doctor2.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Dr. Rajesh Gurung</h3>
+      <p>Wilderness Medicine Practitioner</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button">Consult</button>
+      </a>
+    </article>
+    <article class="post">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/doctor3.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Dr. Anjali Thapa</h3>
+      <p>Trekking Health Consultant</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button">Consult</button>
+      </a>
+    </article>
+    <article class="post">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/doctor4.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Dr. Laxmi Sherpa</h3>
+      <p>Mountain Rescue Physician</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button">Consult</button>
+      </a>
+    </article>
+  </div>
 
-    <div class="container">
+  <div class="experttrekkers">
+    <h3>Expert Trek Guiders</h3>
+  </div>
 
-        <article class="post">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/doctor1.jpg') }}" alt="Cost Prediction Model" class="thumbnail">
-            <h3>Dr. Mohan Sherpa</h3>
-            <p>Altitude Medicine Specialist</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button">Consult</button>
-            </a>
-        </article>
-        <article class="post">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/doctor2.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Dr. Rajesh Gurung</h3>
-            <p>Wilderness Medicine Practitioner</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button">Consult</button>
-            </a>
-        </article>
-        <article class="post">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/doctor3.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Dr. Anjali Thapa</h3>
-            <p>Trekking Health Consultant </p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button">Consult</button>
-            </a>
-        </article>
-        <article class="post">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/doctor4.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Dr. Laxmi Sherpa</h3>
-            <p>Mountain Rescue Physician</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button">Consult</button>
-            </a>
-        </article>
-    </div>
-
-
-    <div class="experttrekkers">
-        <h3> Expert Trek Guiders </h3>
-    </div>
-
-
-    <div class="container1">
-
-        <article class="post1">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/guide1.jpg') }}" alt="Cost Prediction Model" class="thumbnail">
-            <h3>Ramesh Shrestha</h3>
-            <p>Himalayan Trekking Expert</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button1">Consult</button>
-            </a>
-        </article>
-        <article class="post1">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/guide2.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Binita Tamang</h3>
-            <p>Eco-Trek Specialist</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button1">Consult</button>
-            </a>
-        </article>
-        <article class="post1">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/guide3.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Dinesh Gurung</h3>
-            <p>Adventure Trek Specialist</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button1">Consult</button>
-            </a>
-        </article>
-        <article class="post1">
-            <img src="{{ url_for('static', filename='images/Trek&Treat/guide4.jpg') }}" alt="Trek Prediction Model" class="thumbnail">
-            <h3>Priya Sherpa</h3>
-            <p>Wilderness Trek Specialist</p>
-            <a href="{{ url_for('guide') }}">
-                <button class="add-button1">Consult</button>
-            </a>
-        </article>
-    </div>
-
-
-
-
+  <div class="container1">
+    <article class="post1">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/guide1.jpg') }}"
+        alt="Cost Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Ramesh Shrestha</h3>
+      <p>Himalayan Trekking Expert</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button1">Consult</button>
+      </a>
+    </article>
+    <article class="post1">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/guide2.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Binita Tamang</h3>
+      <p>Eco-Trek Specialist</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button1">Consult</button>
+      </a>
+    </article>
+    <article class="post1">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/guide3.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Dinesh Gurung</h3>
+      <p>Adventure Trek Specialist</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button1">Consult</button>
+      </a>
+    </article>
+    <article class="post1">
+      <img
+        src="{{ url_for('static', filename='images/Trek&Treat/guide4.jpg') }}"
+        alt="Trek Prediction Model"
+        class="thumbnail"
+      />
+      <h3>Priya Sherpa</h3>
+      <p>Wilderness Trek Specialist</p>
+      <a href="{{ url_for('guide') }}">
+        <button class="add-button1">Consult</button>
+      </a>
+    </article>
+  </div>
 </body>
 {% endblock %}
