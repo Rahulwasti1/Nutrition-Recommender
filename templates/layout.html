@@ -21,40 +21,39 @@
     <style>
       /* Style for dropdown */
       .dropdown {
-          position: relative;
-          display: inline-block;
+        position: relative;
+        display: inline-block;
       }
-    
+
       .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f9f9f9;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          z-index: 1;
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
       }
-    
+
       .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-          text-align: left;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
       }
-    
+
       .dropdown-content a:hover {
-          background-color: #f1f1f1;
+        background-color: #f1f1f1;
       }
-    
+
       .dropdown:hover .dropdown-content {
-          display: block;
+        display: block;
       }
-    
+
       .dropdown:hover .dropbtn {
-          background-color: transparent;
+        background-color: transparent;
       }
     </style>
-
   </head>
   <body>
     <header>
@@ -74,15 +73,16 @@
           <li><a href="{{ url_for('model') }}">Model</a></li>
           <li class="dropdown">
             <a href="#" class="dropbtn">More Page</a>
-            <div class="dropdown-content"> <!-- Fixed class name -->
+            <div class="dropdown-content">
+              <!-- Fixed class name -->
               <a href="{{url_for('map')}}">Map</a>
               <a href="{{url_for('routes')}}">Routes</a>
             </div>
           </li>
-        
-          <li>
-            <!-- <a href="#how-work">How it works?</a> -->
-          </li>
+
+          <!-- <li>
+            <a href="#how-work">How it works?</a>
+          </li> -->
         </ul>
 
         <div id="floating-nav-wrapper" class="relative">
@@ -105,12 +105,16 @@
                 </svg>
               </div>
               <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-                <li>
-                  <a href="#how-work" onclick="closeSidebar()">How it works?</a>
-                </li>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('dataset')}}">Dataset</a></li>
+                <li><a href="{{ url_for('model') }}">Model</a></li>
+                <li><a href="{{url_for('map')}}">Map</a></li>
+                <li><a href="{{url_for('routes')}}">Routes</a></li>
+
+                <!-- <li>
+                  <a href="#how-work">How it works?</a>
+                </li> -->
               </ul>
             </nav>
           </div>

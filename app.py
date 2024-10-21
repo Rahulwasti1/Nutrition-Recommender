@@ -13,9 +13,11 @@ app = Flask(__name__)
 rfr_model = pickle.load(open('rfr_model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/about')
 def about():
@@ -27,63 +29,65 @@ def dataset():
     df = pd.read_csv("Notebook/cleaned_dataset.csv")
 
     # Creating table HTML
-    table_html = df.to_html(classes='data', index=False)
+    df.drop("Unnamed: 0", axis=1, inplace=True)  # removes that annoying unnamed column
+    table_html = df.to_html(classes='data', index=True)
 
-    ### 1. Scatter Plot for 'Trek' vs 'Trip Grade'
+    # 1. Scatter Plot for 'Trek' vs 'Trip Grade'
     fig1 = px.scatter(
-        df, 
-        x='Trek', 
-        y='Trip Grade', 
+        df,
+        x='Trek',
+        y='Trip Grade',
         title='Trek vs Trip Grade Scatter Plot',
         labels={'Trek': 'Trek', 'Trip Grade': 'Trip Grade'}
     )
-    
-    ### 2. Scatter Plot for 'Max Altitude' vs 'Cost' with color representing 'Trip Grade'
+
+    # 2. Scatter Plot for 'Max Altitude' vs 'Cost' with color representing 'Trip Grade'
     fig2 = px.scatter(
-        df, 
-        x='Max Altitude', 
-        y='Cost', 
-        color='Trip Grade', 
+        df,
+        x='Max Altitude',
+        y='Cost',
+        color='Trip Grade',
         title='Max Altitude vs Cost (colored by Trip Grade)',
-        labels={'Max Altitude': 'Max Altitude', 'Cost': 'Cost', 'Trip Grade': 'Trip Grade'},
-        size='Trekking Group Size',  
-        hover_data=['Trek']  
+        labels={'Max Altitude': 'Max Altitude',
+                'Cost': 'Cost', 'Trip Grade': 'Trip Grade'},
+        size='Trekking Group Size',
+        hover_data=['Trek']
     )
 
-    ### 3. Pie Chart for 'Purpose of Travel'
+    # 3. Pie Chart for 'Purpose of Travel'
     fig3 = px.pie(
-        df, 
-        names='Purpose of Travel', 
+        df,
+        names='Purpose of Travel',
         title='Purpose of Travel Distribution',
         color_discrete_sequence=px.colors.qualitative.Set1,
     )
 
-    ### 4. Violin Plot for 'Age' vs 'Fitness Level'
+    # 4. Violin Plot for 'Age' vs 'Fitness Level'
     fig4 = px.violin(
-        df, 
-        x='Fitness Level', 
-        y='Age', 
+        df,
+        x='Fitness Level',
+        y='Age',
         title='Age Distribution by Fitness Level',
-        box=True,  
-        points='all',  
+        box=True,
+        points='all',
     )
 
-    ### 5. Heatmap for 'Weather Conditions' vs 'Trekking Group Size'
+    # 5. Heatmap for 'Weather Conditions' vs 'Trekking Group Size'
     fig5 = px.density_heatmap(
-        df, 
-        x='Weather Conditions', 
-        y='Trekking Group Size', 
+        df,
+        x='Weather Conditions',
+        y='Trekking Group Size',
         title='Weather Conditions vs Trekking Group Size Heatmap'
     )
 
-    ### 6. Parallel Chart for 'Sex', and 'Health Incidents'
+    # 6. Parallel Chart for 'Sex', and 'Health Incidents'
     fig6 = px.parallel_categories(
-        df, 
-        dimensions=['Sex', 'Health Incidents'], 
+        df,
+        dimensions=['Sex', 'Health Incidents'],
         title='Sex and Health Incidents Parallel Categories Diagram',
-        color=df['Age'], 
-        color_continuous_scale=px.colors.sequential.Viridis,  
-        color_continuous_midpoint=df['Age'].mean()  
+        color=df['Age'],
+        color_continuous_scale=px.colors.sequential.Viridis,
+        color_continuous_midpoint=df['Age'].mean()
     )
 
     fig1.update_layout(height=600)
@@ -114,13 +118,16 @@ def dataset():
 def map():
     return render_template('map.html')
 
+
 @app.route('/routes')
 def routes():
     return render_template('routes.html')
 
+
 @app.route('/model')
 def model():
     return render_template('form.html', recommended_value=None)
+
 
 @app.route('/guide')
 def guide():
@@ -133,6 +140,7 @@ def predict_api():
     new_data = scaler.transform(np.array(list(data.values())).reshape(1, -1))
     output = rfr_model.predict(new_data)
     return jsonify(output[0])
+
 
 @app.route('/predict', methods=['POST'])
 def recommend():
@@ -159,8 +167,9 @@ def recommend():
     adjusted_output = [value * trek_duration for value in output]
 
     # Nutrient details
-    nutrient_labels = ["Carbs (g)", "Protein (g)", "Water (l)", "Iron (mg)", "Antioxidants"]
-    
+    nutrient_labels = ["Carbs (g)", "Protein (g)",
+                       "Water (l)", "Iron (mg)", "Antioxidants"]
+
     descriptions = [
         "Low carbs can lead to fatigue and decreased endurance during trekking. Carbs are vital for energy.",
         "Protein deficiency can slow muscle recovery, affecting stamina on longer treks.",
@@ -168,15 +177,15 @@ def recommend():
         "Iron is crucial for oxygen transport. Low iron can result in fatigue, especially at high altitudes.",
         "Antioxidants help protect cells from damage due to high physical exertion at altitude."
     ]
-    
+
     food_sources = [
         "rice, noodles, potatoes, chapati, corn",         # Carbs
-        "lentils (dal), eggs, yak cheese, chicken, tofu", # Protein
-        "boiled water, bottled water, herbal tea, soup, coconut water", # Water
+        "lentils (dal), eggs, yak cheese, chicken, tofu",  # Protein
+        "boiled water, bottled water, herbal tea, soup, coconut water",  # Water
         "spinach, beans, lentils, chickpeas, dried apricots",  # Iron
         "oranges, green tea, tomatoes, spinach, carrots"       # Antioxidants
     ]
-    
+
     # Formatting each nutrient with its description and food sources
     nutrient_data = [
         {
@@ -189,6 +198,11 @@ def recommend():
 
     # Redirect to the model route with recommended_value as a query parameter
     return render_template('form.html', nutrient_data=nutrient_data)
+
+
+@app.route("/prompt")
+def prompt():
+    return render_template("prompt.html")
 
 
 if __name__ == "__main__":

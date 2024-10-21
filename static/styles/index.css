@@ -9,7 +9,7 @@
 
 .landing h1 {
   /* font-size: 4rem; */
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif; 
   margin-top: 1%;
 }
 
@@ -36,7 +36,6 @@
 
 .landing p {
   grid-area: c;
-  
 }
 
 .pill {
@@ -221,7 +220,11 @@ article p {
   }
 
   .landing img {
-    height: 50dvh;
+    width: 50vw; 
+    height: auto;
+    max-height: 45dvh; 
+    display: block; 
+    margin: 0 auto; 
   }
 
   section {

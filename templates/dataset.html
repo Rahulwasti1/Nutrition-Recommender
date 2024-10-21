@@ -1,70 +1,67 @@
 {% extends "layout.html" %}
 
+<!--  -->
 {% block stylesheets %}
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        color: white;
-    }
+  h1 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: #000000;
+    font-size: 25px;
+  }
 
-    h1 {
-        margin-top: 2%;
-        margin-bottom: 2%;
-        text-align: center;
-        color: #000000;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: 25px;
-    }
+  h2 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: #000000;
+  }
 
-    h2 {
-        margin-top: 2%;
-        margin-bottom: 2%;
-        text-align: center;
-        color: #000000;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
+  .table-container {
+    margin-top: 2%;
+    max-height: 650px;
+    overflow-y: auto;
+    margin: 0 auto;
+    width: 95%;
+    height: 50%;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 5%;
+    font-size: small;
+  }
 
-    .table-container {
-        margin-top: 2%;
-        max-height: 650px; 
-        overflow-y: auto;  
-        margin: 0 auto;    
-        width: 95%;    
-        height: 50%;    
-        background-color: #2f4056;
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 5%;
-        font-size: small;
-    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+  thead th {
+    background-color: var(--accent);
+    color: var(--background);
+  }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ccc;
-    }
+  tbody tr {
+    background-color: color-mix(in srgb, var(--accent) 20%, transparent 80%);
+  }
 
-    th {
-        background-color: #2b3d4f;
-        color: white;
-    }
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
 
-    .visualizations {
-        width: 95%;       
-        height: 600%;       
-        margin-bottom: 120px; 
-        /* overflow: visible;  
+  .visualizations {
+    width: 95%;
+    height: 600%;
+    margin-bottom: 120px;
+    /* overflow: visible;  
         z-index: 1;    */
-        margin-right: 4%;
-        margin-left: 2.5%;
-    }
-
+    margin-right: 4%;
+    margin-left: 2.5%;
+  }
 </style>
 
 {% endblock %}
@@ -76,14 +73,9 @@
 
 <h1>Dataset Overview</h1>
 
-<div class="table-container">
-    {{ table|safe }}
-</div>
+<div class="table-container">{{ table|safe }}</div>
 
 <h2>Explore Visualizations</h2>
-<div class="visualizations">
-    {{ graph_html|safe }}
-</div>
-
+<div class="visualizations">{{ graph_html|safe }}</div>
 
 {% endblock %}

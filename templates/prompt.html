@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/prompt.css') }}"
+    />
+    <title>Prompt</title>
+  </head>
+  <header>
+    <nav class="navlinks relative">
+      <a href="/" aria-label="Go to home page">
+        <img
+          src="{{ url_for('static', filename='/images/logos/logo.png') }}"
+          alt="Acme Logo"
+          draggable="false"
+        />
+      </a>
+
+      <ul></ul>
+    </nav>
+  </header>
+
+  <body>
+    <div class="container">
+      <div class="main">
+        <h1>What can we help you with?</h1>
+        <div class="prompt">
+          <textarea
+            type="text"
+            placeholder="Ask a question..."
+            id="prompt-input"
+          ></textarea>
+          <button class="send-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // auto resizing
+    const textarea = document.querySelector("#prompt-input");
+    textarea.addEventListener("input", function () {
+      if (this.value != "") {
+        this.style.height = "auto";
+        this.style.height = `calc(${this.scrollHeight}px - 16.25px)`;
+      } else {
+        this.style.height = "2.5rem";
+      }
+    });
+  </script>
+</html>
