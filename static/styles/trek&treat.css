@@ -1,112 +1,107 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14px;
-    background-color: #f4f4f4;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  font-size: 0.875rem;
+  background-color: #f4f4f4;
 }
 
 .h2 {
-    margin-top: 3%;
-    margin-left: 5.5%;
-    font-size: large;
+  border-left: 2px solid #000;
+  margin-top: 3%;
+  margin-left: 5.5%;
+  padding-left: 1.5rem;
+  font-size: large;
 }
 
 .h3 {
-    margin-top: 4%;
-    margin-left: 5.5%;
-    font-size: large;
-    margin-bottom: 5%;
+  margin-top: 4%;
+  margin-left: 5.5%;
+  font-size: large;
+  margin-bottom: 5%;
 }
 
 .expertdoctors {
-    margin-top: 4%;
-    margin-bottom: 3%;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-top: 4%;
+  margin-bottom: 3%;
+  text-align: center;
+  font-size: 25px;
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 }
 
 .experttrekkers {
-    font-size: large;
-    margin-bottom: 2%;
-    margin-top: 4%;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: large;
+  margin-bottom: 2%;
+  margin-top: 4%;
+  text-align: center;
+  font-size: 25px;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-    gap: 10px; 
-    max-width: 90%;
-    margin: 10px auto; 
-    margin-bottom: 5%;
-
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 90%;
+  margin: 10px auto;
+  margin-bottom: 5%;
 }
 
 .container1 {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; 
-    gap: 10px; 
-    max-width: 90%;
-    margin: 10px auto; 
-    margin-bottom: 5%;
-    text-align: left;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 90%;
+  margin: 10px auto;
+  margin-bottom: 5%;
+  text-align: left;
 }
 
 .post {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    flex: 1 1 calc(25% - 20px); 
-    max-width: calc(25% - 20px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    align-items: flex-start;
-    justify-content: space-between; 
-
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: calc(25% - 20px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .post1 {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    flex: 1 1 calc(25% - 20px); 
-    max-width: calc(25% - 20px); 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: calc(25% - 20px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .thumbnail {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    margin-bottom: 4%;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 4%;
 }
 
+.add-button,
+.add-button1 {
+  background-color: var(--accent);
+  margin: 1rem 0 0 0;
+  width: 100%;
+}
 
-.add-button, .add-button1 {
-    width: 398%; 
+.add-button:hover,
+.add-button1:hover {
+  background-color: var(--primary);
+}
+
+/* .add-button, .add-button1 {
+    width: 100%;
     background-color: #28a745;
     color: whitesmoke;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px; 
-    margin-left: -3px;
-    text-align: center; 
 }
 
 .add-button:hover {
@@ -115,48 +110,43 @@ body {
 
 .add-button1:hover {
     background-color: #218838;
-}
-
-
-
+} */
 
 /* Media queries for responsiveness */
 
 /* Medium screens: tablets (max-width: 1024px) */
 @media screen and (max-width: 1024px) {
-    .post {
-        flex: 1 1 calc(50% - 20px); 
-        max-width: calc(50% - 20px);
-    }
+  .post {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
 
-    /* h3 {
+  /* h3 {
         font-size: 16px;
     } */
 }
 
 /* Small screens: mobile devices (max-width: 768px) */
 @media screen and (max-width: 768px) {
-    .post {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-    .post1 {
-        flex: 1 1 100%; 
-        max-width: 100%;
-    }
+  .post {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .post1 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 
-    /* h3 {
+  /* h3 {
         font-size: 20px;
     } */
 
-    .add-button {
-        padding: 8px; 
-        font-size: 14px;
-        width: 490%;
-    }
-    .add-button1 {
-        padding: 8px; 
-        font-size: 14px;
-        width: 490%;
-    }
+  .add-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+  .add-button1 {
+    padding: 8px;
+    font-size: 14px;
+  }
 }

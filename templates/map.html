@@ -1,20 +1,8 @@
-
-{% extends "layout.html" %}
-
-{% block stylesheets %}
-<style>
-
-    .map{
-        margin-bottom: 10%;
-    }
-
-    .map1{
-        margin-top: 10px;
-        width: 100%;
-    }
-
-</style>
-
+{% extends "layout.html" %} {% block stylesheets %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/map.css') }}"
+/>
 
 {% endblock %}
 <!--  -->
@@ -23,18 +11,10 @@
 <!--  -->
 {% block body %}
 
-<h1></h1>
+<h1 style="text-align: center">Map</h1>
+<div id="map"></div>
 
-<div class="map">
-    <img src="static/images/svgs/0_nepal.svg"><br>
-</div>
-
-<!-- <div class="map1">
-    <img src="static/images/logos/nepal_map.png"><br>
-</div> -->
-
-
-
-
+<script src="{{ url_for('static', filename='js/mapdata.js') }}"></script>
+<script src="{{ url_for('static', filename='js/countrymap.js') }}"></script>
 
 {% endblock %}

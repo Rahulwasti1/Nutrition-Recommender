@@ -6,6 +6,10 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='styles/index.css') }}"
 />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/about.css') }}"
+/>
 {% endblock %}
 <!--  -->
 {% block title %} About us {% endblock %}
@@ -14,8 +18,8 @@
 {% block body %}
 
 <section style="width: 80%; margin: auto">
-  <div class="pill">Team</div>
-  <article>
+  <div class="pill">Motive</div>
+  <article style="gap: 1rem">
     <img
       src="{{ url_for('static', filename='images/svgs/team.svg') }}"
       alt="illustration of a team"
@@ -23,36 +27,134 @@
     />
     <h2>About Us</h2>
     <p>
-      At acme.ai, we’re passionate about helping adventurers like you have unforgettable trekking experiences. We know how essential it is to be well-prepared for the journey ahead, especially when it comes to nutrition. Our mission is to provide personalized nutrition insights that cater to your unique trekking needs, ensuring you have the energy and stamina to enjoy every moment on the trail.
+      At acme.ai, we're passionate about helping adventurers like you have
+      unforgettable trekking experiences. We know how essential it is to be
+      well-prepared for the journey ahead, especially when it comes to
+      nutrition. Our mission is to provide personalized nutrition insights that
+      cater to your unique trekking needs, ensuring you have the energy and
+      stamina to enjoy every moment on the trail.
     </p>
     <p>
-      Our team consists of avid trekkers and nutrition experts who understand the challenges faced on various terrains. Through our own trekking experiences, we learned that the right nutrition can significantly impact your adventure. That’s why we developed our prediction tool, designed to offer tailored recommendations based on your specific trek details, such as duration and altitude. Whether you’re a seasoned hiker or just starting out, we’re here to support you with the knowledge you need to thrive.
+      Our team consists of avid trekkers and nutrition experts who understand
+      the challenges faced on various terrains. Through our own trekking
+      experiences, we learned that the right nutrition can significantly impact
+      your adventure. That's why we developed our prediction tool, designed to
+      offer tailored recommendations based on your specific trek details, such
+      as duration and altitude. Whether you're a seasoned hiker or just starting
+      out, we're here to support you with the knowledge you need to thrive.
     </p>
     <p>
-      We also believe in fostering a community of like-minded adventurers. Our platform encourages sharing tips, stories, and support among users, creating a space where everyone can learn and grow together. So, as you gear up for your next trek, know that we’re here to help you prepare with confidence, ensuring you have everything you need for an amazing journey. Your adventure is waiting, and we can’t wait to be a part of it!    </p>
+      We also believe in fostering a community of like-minded adventurers. Our
+      platform encourages sharing tips, stories, and support among users,
+      creating a space where everyone can learn and grow together. So, as you
+      gear up for your next trek, know that we're here to help you prepare with
+      confidence, ensuring you have everything you need for an amazing journey.
+      Your adventure is waiting, and we can't wait to be a part of it!
+    </p>
   </article>
 </section>
 
-<style>
-  article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    gap: 1rem;
-    padding: 1rem 3rem !important;
-    margin: auto 5rem !important;
-  }
-
-  p {
-    padding: 0.1rem 2rem;
-    font-family: 'Arial', sans-serif; 
-    font-size: 16px; 
-    color: #333;
-    text-align: justify; 
-    word-spacing: 1.5px;
-  }
-
-</style>
+<section class="meet-the-team">
+  <div class="pill">Team</div>
+  <h2>Meet The Team</h2>
+    <div class="members">
+      <article class="member">
+        <div class="face">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D03AQFFC716s3Q58w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706031553249?e=1735171200&v=beta&t=uRguGaOGeaPKAjG43xfoHZw9caKA4A0Kk-cp5zSxX9s"
+            height="200"
+            alt="a picture of a leader"
+            draggable="false"
+          />
+        </div>
+        <div class="credentials">
+          <h4>Rahul Wasti</h4>
+          <span class="role">Leader</span>
+        </div>
+        <p>
+          Rahul is a dynamic leader known for fostering collaboration and
+          encouraging creativity within the team. With a focus on empowering
+          others, they drive projects forward and ensure everyone reaches their
+          full potential.
+        </p>
+      </article>
+      <article class="member">
+        <div class="face">
+          <img
+            src="{{ url_for('static', filename='images/svgs/avatar.svg') }}"
+            height="200"
+            alt="a avatar of a member"
+            draggable="false"
+          />
+        </div>
+        <div class="credentials">
+          <h4>Sujal Ratna Tuladhar</h4>
+          <span class="role">Member</span>
+        </div>
+        <p>
+          Sujal is a dedicated team member who brings enthusiasm and expertise
+          to the group. With a strong focus on collaboration and
+          problem-solving, he plays a vital role in achieving our goals.
+        </p>
+      </article>
+      <article class="member">
+        <div class="face">
+          <img
+            src="{{ url_for('static', filename='images/svgs/avatar.svg') }}"
+            height="200"
+            alt="a avatar of a member"
+            draggable="false"
+          />
+        </div>
+        <div class="credentials">
+          <h4>Monalisha Thapa Magar</h4>
+          <span class="role">Member</span>
+        </div>
+        <p>
+          Monalisha is a passionate contributor with a knack for problem
+          solving. She thrives in collaborative environments and is always eager
+          to take on new challenges to help the team succeed.
+        </p>
+      </article>
+      <article class="member">
+        <div class="face">
+          <img
+            src="{{ url_for('static', filename='images/svgs/avatar.svg') }}"
+            height="200"
+            alt="a avatar of a member"
+            draggable="false"
+          />
+        </div>
+        <div class="credentials">
+          <h4>Amogh Shakya</h4>
+          <span class="role">Member</span>
+        </div>
+        <p>
+          With a strong focus on collaboration, Amogh supports the team by
+          sharing ideas and providing valuable insights. His enthusiasm for the
+          work helps keep the team motivated.
+        </p>
+      </article>
+      <article class="member">
+        <div class="face">
+          <img
+            src="{{ url_for('static', filename='images/svgs/avatar.svg') }}"
+            height="200"
+            alt="a avatar of a member"
+            draggable="false"
+          />
+        </div>
+        <div class="credentials">
+          <h4>Mamata Shrestha</h4>
+          <span class="role">Member</span>
+        </div>
+        <p>
+          With a keen eye for detail, Mamata excels at writing content. Her
+          dedication and creativity inspire the team, making a significant
+          impact on our projects.
+        </p>
+      </article>
+    </div>
+</section>
 
 {% endblock %}
